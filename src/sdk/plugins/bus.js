@@ -11,7 +11,7 @@ class Channel {
   }
   on(topic, handler) {
     if (!topic || !handler) {
-      throw new CallWithIllegalParamsError('Both "topic" and "handler" are required when call connect ')
+      throw new CallWithIllegalParamsError('Both "topic" and "handler" are required when call on ')
     }
     if (typeof topic !== 'string' || typeof handler !== 'function') {
       throw new TypeError('"topic" should be a "string" and "handler" should be a function ')
