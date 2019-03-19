@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactApp from './ReactApp'
 import applyPlugins from 'src/sdk/apply_plugins'
+import initStore from './init_store'
 
 class App {
 
@@ -11,8 +12,8 @@ class App {
     window.getApp = () => this
   }
 
-  addView = (view) => {
-    this.views.unshift(view)
+  insertView = (view, index) => {
+    this.views.splice(index, 0, view)
   }
 
   loadModules = () => {
@@ -38,10 +39,10 @@ class App {
 
   afterPlugins = () => {
     this.appToReactApp = window.getApp().bus.connect('App-ReactApp', this)
+    window.getApp().store.init(initStore)
   }
 
   mount(container) {
-    this.container = container
     ReactDOM.render(<ReactApp views={this.views} />, container, () => {
       this.loadModules()
     })

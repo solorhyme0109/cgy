@@ -4,7 +4,7 @@ import ModuleLoading from 'src/sdk/components/ModuleLoading/index.js'
 class UserInfoModule {
   views = [
     {
-      path: '/userInfo',
+      path: '/userInfo/:id',
       component: Loadable({
         loader: () => import('./views/UserInfoDetail' /* webpackChunkName: "UserInfoDetail" */),
         loading: ModuleLoading
@@ -16,7 +16,8 @@ class UserInfoModule {
 const userInfoModule = new UserInfoModule()
 
 const app = window.getApp()
-app.registerModule(userInfoModule).then(() => {
-  app.navigateTo('/userInfo')
-})
-app.baseLayout.addNav({path: '/userInfo', text: '用户信息'})
+app.registerModule(userInfoModule)
+// .then(() => {
+//   app.navigateTo('/userInfo/1')
+// })
+app.baseLayout.addNav({path: '/userInfo/12', text: '用户信息'})

@@ -64,10 +64,10 @@ class BaseLayout {
 class BaseLayoutPlugin {
   apply(app) {
     app.baseLayout = new BaseLayout()
-    app.addView({
+    app.insertView({
       path: '/',
       component: app.baseLayout.BaseLayoutView
-    })
+    }, 0)
   }
 }
 

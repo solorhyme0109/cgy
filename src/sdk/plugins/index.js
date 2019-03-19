@@ -2,3 +2,4 @@
 export { default as lifecycle } from './lifecycle'
 export { default as base_layout } from './base_layout'
 export { default as bus } from './bus'
+export { default as store } from './store'
