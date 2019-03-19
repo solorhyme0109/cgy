@@ -23,6 +23,11 @@ class App {
 
   registerModule = (module) => {
     this.views = [...this.views, ...module.views]
+
+    if (module.namespace && module.model) {
+      window.getApp().store.inject(module.namespace, module.model)
+    }
+
     this.appToReactApp.emit('view-change', { views: this.views })
     return Promise.resolve()
   }

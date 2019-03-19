@@ -2,6 +2,7 @@ import Loadable from 'react-loadable'
 import ModuleLoading from 'src/sdk/components/ModuleLoading/index.js'
 
 class UserInfoModule {
+  namespace = 'userInfo'
   views = [
     {
       path: '/userInfo/:id',
@@ -11,6 +12,10 @@ class UserInfoModule {
       })
     }
   ]
+  model = {
+    username: '张三',
+    age: '100'
+  }
 }
 
 const userInfoModule = new UserInfoModule()

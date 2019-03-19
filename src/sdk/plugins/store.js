@@ -52,6 +52,18 @@ class Store {
     })
   }
 
+  inject(modelKey, model) {
+    // TODO: isPlainObject
+    if (typeof modelKey !== 'string' || typeof model !== 'object') {
+      throw new TypeError(`when call "inject(modelKey, model)", the "modelKey" should be string and "model" should be a plain object.`)
+    }
+    if (!this.models.get(modelKey)) {
+      this.models.set(modelKey, model)
+    } else {
+      warn(`"${modelKey}" has existed, you can't inject it twice.`)
+    }
+  }
+
 }
 
 class storePlugin {
