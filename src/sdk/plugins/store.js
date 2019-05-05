@@ -39,7 +39,7 @@ class Store {
     const targetListeners = this.connections.get(modelKey)
 
     // call the callbacks
-    targetListeners.forEach((listener) => listener.update(modelKey, this.models.get(modelKey)))
+    targetListeners.forEach((listener) => listener.update(this.models.get(modelKey), modelKey))
   }
 
   init(models) {

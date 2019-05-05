@@ -1,60 +1,51 @@
 import React, { Component } from 'react'
-import PageControler from 'src/sdk/components/PageControler'
-import { _404 } from './pages'
-import appEnhancer from 'src/sdk/app_enhancer'
-import {
-  withDragDropContext,
-  antd,
-  router,
-  withRouter
-} from './enhancers'
 import './index.less' 
+import {STORE_KEY_MODULE} from './constants'
+import { BrowserRouter } from 'react-router-dom'
+import { LocaleProvider } from 'antd'
+import zhCN from 'antd/lib/locale-provider/zh_CN'
+import BaseLayout from './layouts/BaseLayout'
+import Route from 'src/sdk/Route'
+import Redirect from 'src/sdk/Redirect'
+import Switch from 'src/sdk/Switch'
+import dragDropContext from './appDecorators/drag_drop_context'
 
+@dragDropContext
 class ReactApp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      views: props.views
+      modules: {}
     }
   }
 
   componentDidMount() {
-    window.getApp().lifecycle.run('mounted')
-    this.channel = window.getApp().bus.connect('App-ReactApp', this)
-    this.channel.on('view-change', (payload) => {
-      this.setState({
-        views: payload.views
-      })
-    })
-    this.channel.on('navigate', (payload) => {
-      this.navigateTo(payload.path)
-    })
+    global.getApp().lifecycle.run('mounted')
+    this.storeConnection = global.getApp().store.connect(STORE_KEY_MODULE, {update: this.updateModules})
+  }
+
+  updateModules = (modules, modelKey) => {
+    this.setState({modules})
   }
 
   componentWillUnmount() {
-    this.channel.close()
-  }
-
-  navigateTo = (path) => {
-    const {history} = this.props
-    history.push(path)
+    this.storeConnection.disconnect()
   }
 
   render() {
-    const { views } = this.state
+    const {modules} = this.state
     return (
-      <PageControler
-        pages={views}
-        notFound={_404}
-      />
+      <LocaleProvider locale={zhCN}>
+        <BrowserRouter>
+          <Switch>
+            {/* route for page/layout */}
+            <Route path='/base' render={(props) => <BaseLayout path='/base' modules={modules} />} />
+            <Redirect to='/base' />
+          </Switch>
+        </BrowserRouter>
+      </LocaleProvider>
     )
   }
 }
 
-export default appEnhancer(ReactApp, [
-  withRouter,
-  withDragDropContext,
-  antd,
-  router,
-])
-
+export default ReactApp

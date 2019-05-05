@@ -3,11 +3,11 @@ import { Route as ReactRoute } from 'react-router-dom'
 
  class RouteWithLifecycle extends React.Component {
   componentDidMount() {
-    window.getApp().lifecycle.run('route-enter')
+    global.getApp().lifecycle.run('route-enter')
   }
 
   componentWillUnmount() {
-    window.getApp().lifecycle.run('route-leave')
+    global.getApp().lifecycle.run('route-leave')
   }
 
   render() {
@@ -18,11 +18,11 @@ import { Route as ReactRoute } from 'react-router-dom'
 class Route extends React.Component {
   
   render() {
-    const { component: Component, ...restProps } = this.props
+    const { component: Component, render, ...restProps } = this.props
     return (
       <ReactRoute
         {...restProps}
-        render={(props) => <RouteWithLifecycle><Component {...props}/></RouteWithLifecycle>}
+        render={(props) => <RouteWithLifecycle>{render ? render(props) : <Component {...props}/>}</RouteWithLifecycle>}
       />
     )
   }

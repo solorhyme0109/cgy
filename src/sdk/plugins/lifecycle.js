@@ -43,6 +43,7 @@ export class Lifecycle {
     if (!phase) {
       warn(`\`${phaseName}\` doesn't exist.`)
     } else {
+      console.log(`run ${phaseName}...`)
       phase.runHooks(...args)
     }
   }

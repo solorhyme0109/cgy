@@ -2,55 +2,50 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactApp from './ReactApp'
 import applyPlugins from 'src/sdk/apply_plugins'
-import initStore from './init_store'
+import {STORE_KEY_MODULE} from './constants'
 
 class App {
 
-  views = []
-
   constructor() {
-    window.getApp = () => this
+    global.getApp = () => this
   }
 
-  insertView = (view, index) => {
-    this.views.splice(index, 0, view)
-  }
-
-  loadModules = () => {
-    // window.loadModule('userInfo')
-    import('./modules/userInfo')
-  }
-
-  registerModule = (module) => {
-    this.views = [...this.views, ...module.views]
-
-    if (module.namespace && module.model) {
-      window.getApp().store.inject(module.namespace, module.model)
+  handleImportModule = (module, namespace) => {
+    const _module = {
+      namespace,
+      render: ({mountNode, basePath, ...rest}) => {
+        _module.basePath = basePath
+        return module.default({namespace, mountNode, basePath, ...rest})
+      }
     }
+    global.getApp().store.update(STORE_KEY_MODULE, {[namespace]: _module})
+  }
 
-    this.appToReactApp.emit('view-change', { views: this.views })
-    return Promise.resolve()
+  handleImportModuleFail = (err) => {
+    console.log(err)
+  }
+
+  importModules = () => {
+    import(/* webpackChunkName: "inspect_list", webpackPrefetch: true */'./modules/inspect_list').then((module) => this.handleImportModule(module, 'inspect_list')).catch(this.handleImportModuleFail)
   }
 
   applyPlugins = (plugins) => {
     applyPlugins(this, plugins)
-
     this.afterPlugins()
   }
 
   navigateTo(path) {
-    this.appToReactApp.emit('navigate', { path })
+
   }
 
   afterPlugins = () => {
-    this.appToReactApp = window.getApp().bus.connect('App-ReactApp', this)
-    window.getApp().store.init(initStore)
+    global.getApp().store.inject(STORE_KEY_MODULE, {})
+
+    this.importModules()
   }
 
   mount(container) {
-    ReactDOM.render(<ReactApp views={this.views} />, container, () => {
-      this.loadModules()
-    })
+    ReactDOM.render(<ReactApp />, container)
   }
 }
 
