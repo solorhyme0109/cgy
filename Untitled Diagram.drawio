@@ -1,1 +1,46 @@
-<mxfile host="www.draw.io" modified="2019-11-17T12:34:17.474Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36" version="12.2.6" etag="udgIz2eNX3P9EDbWheDH" type="github"><diagram id="wOmbdr19Bk8OuBAlMmh_">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="www.draw.io" modified="2019-11-17T12:48:10.534Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36" etag="LHP9pG9GCewluzrY_ksc" version="12.2.6" type="github" pages="1">
+  <diagram id="wOmbdr19Bk8OuBAlMmh_" name="Page-1">
+    <mxGraphModel dx="741" dy="508" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="120" width="310" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-5" value="组件库" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="170" width="40" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-6" value="模块" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="320" y="250" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-7" value="模块" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="240" y="250" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-8" value="模块" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="400" y="250" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-9" value="Layout" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="170" width="220" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-10" value="模块" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="240" y="330" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-11" value="模块" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="320" y="330" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-12" value="模块" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="400" y="330" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-13" value="路由" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="210" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-14" value="state" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="210" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ExyQ0a6ch-5PRTwcotvs-17" value="A Monolith APP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="180" y="130" width="110" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
